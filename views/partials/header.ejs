@@ -1,0 +1,129 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" 					     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+<!-- FontAwesome	   -->
+	  <script src="https://kit.fontawesome.com/106dacd3a9.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&family=Suez+One&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+	  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+	  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	  
+
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+
+	  <title>YelpCamp</title>
+ 
+		 
+	  
+  </head>
+	<body>
+		
+		<nav class="navbar  navbar-dark bg-dark navbar-expand-md" id="mainnav">
+		
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navlinks">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navlinks">
+		<div class="mr-auto">
+			<ul class="navbar-nav mr-2">
+              <li class="nav-item">
+                  	<a href="/campgrounds" class="nav-link">HOME</a>
+			  </li>
+				<div class="border-left border-white m-2"></div>
+              <li class="nav-item">
+                  	<a href="/about" class="nav-link">ABOUT</a>
+			  </li>
+            </ul>
+		</div>
+			<div class="navbar-header mx-auto">
+				<a href="/" class="navbar-brand ">
+			<img src="https://img.icons8.com/color/70/000000/camping-tent.png" />
+			<span class="ml3">YelpCamp</span>
+			</a>
+			</div>
+            <ul class="navbar-nav ml-auto">
+				 <% if(!currentUser) { %>
+			
+					<li class="nav-item">
+                  		<a href="/login" class="nav-link">LOGIN</a>
+				  	</li>
+				<div class="border-left border-white m-2"></div>
+				  	<li class="nav-item">
+					  	<a href="/register" class="nav-link">SIGNUP</a>
+				  	</li>
+					<% } else { %>
+					<li class="nav-item">
+						<div class="nav-link">
+							<div class="dropdown">
+  <a class="btn border-0 btn-sm dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <img  src="https://img.icons8.com/bubbles/75/000000/user-male.png"/> <%= currentUser.username %>
+  </a>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    					<a class="dropdown-item" href="/users/<%= currentUser._id %>">Profile</a>
+					</div>
+						</div>
+					</li>
+						<div class="border-left border-white m-2 heightBorder my-auto"></div>
+					<li class="nav-item my-auto">
+						<a href="/logout" class="nav-link">LOGOUT</a>
+					</li>
+				<% } %>
+            </ul>
+        </div>	
+</nav>
+			  <div class="container">
+			<% if(error && error.length > 0) { %>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<%= error %>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+			 <% } %>
+		<% if(success && success.length > 0) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<%= success %>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+			<% } %>	  
+		</div>
+		
+		<script>
+			// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml3');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+	
+	
+
+anime.timeline()
+  .add({
+    targets: '.ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
+  });		
+		
+		</script>

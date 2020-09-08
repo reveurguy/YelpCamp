@@ -1,0 +1,59 @@
+<%- include("../partials/header") %>
+
+<div class="container p-5 mt-5 mb-5">
+    <div class="row">
+     
+      <div class="col-sm-7 col-md-6 col-lg-5 mx-auto">
+        <div class="card shadow border-0">
+          <div class="card-body">
+					<h1 class="login  text-center">Edit Profile</h1>
+		<form  action="/users/<%= user._id %>?_method=PUT" method="POST" >
+              <div class="form-label-group">
+         <input type="text" name="user[firstName]" class="form-control" value="<%= user.firstName %>" required>
+				  <label for="inputFirstName">First Name</label>
+              </div>
+			 <div class="form-label-group">
+         <input type="text" name="user[lastName]" class="form-control" value="<%= user.lastName %>" required>
+				 <label for="inputLastName">Last Name</label>
+              </div>
+              <div class="form-label-group">
+                
+                <input type="text" name="user[email]" class="form-control" value="<%= user.email %>" required>
+				  <label for="inputEmail">Email</label>
+              </div>
+			   
+              <div class="form-label-group">
+           
+                <input type="text" name="user[phone]" class="form-control" value="<%= user.phone %>" required>
+				   <label for="inputPhone">Phone</label>
+              </div>
+			<div class="form-label-group">
+           
+                <input type="text" name="user[avatar]" class="form-control" value="<%= user.avatar %>" >
+				 <label for="inputAvatarImageUrl">Avatar Image Url</label>
+              </div>
+              <div class="form-label-group">
+                
+                <input type="text" name="user[username]" class="form-control"value="<%= user.username %>" disabled>
+				   <label for="inputUsername">Username</label>
+              </div>
+			<div class="mt-2 mb-2  text-center">
+				 <button type="submit" class="btn btn-danger mr-2">Submit</button>
+              	 
+			</div>
+             
+            </form>
+			  <div class="text-center">
+				  <a href="/users/<%= user._id %>" class="btn btn-secondary mt-2">Back</a>
+			  </div>
+            
+          </div>
+		</div>	
+	</div>	
+</div>
+</div>
+    </div>
+
+
+
+<%- include("../partials/footer") %>

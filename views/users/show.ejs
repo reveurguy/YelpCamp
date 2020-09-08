@@ -1,0 +1,130 @@
+<%- include("../partials/header") %>
+
+<div class="container text-center mt-4">    
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-3 ">
+		<div id="profilePicture" class="card shadow d-none d-md-flex">
+          <% if(!user.avatar) { %>
+            <img class="card-img-top" src="https://img.icons8.com/bubbles/300/000000/user-male.png">
+          <% } else { %>
+            <img class="card-img-top" src="<%= user.avatar %>">
+          <% } %>  
+            <div class="card-body">
+                <h5 class="card-title text-capitalize"><strong> <%= user.username %></strong></h5>
+				<h6 class="card-subtitle text-muted">                    
+							<% if (campgrounds.length === 1) { %>
+							  <%= campgrounds.length %> Campground
+							<% } else { %>
+							  <%= campgrounds.length %> Campgrounds
+							<% } %>
+					<div class="mt-1"><%= reviews.length %> Reviews</div>
+                        </h6> 
+            </div>        
+        </div>
+<div class="d-flex  d-md-none ">
+          <div class="row">
+            <div class="col-4 text-center">
+              <% if(!user.avatar) { %>
+                <img class="rounded " src="https://img.icons8.com/bubbles/300/000000/user-male.png" style="width: 110px; height: 110px;">
+              <% } else { %>
+                <img class="rounded " src="<%= user.avatar %>" style="width: 110px; height: 110px;">
+              <% } %>
+            </div>
+            <div class="col-8 d-flex align-items-stretch">
+              <div id="profilePicture" class="card " >                  
+                <div class="card-body">
+                  <h5 class="card-title text-capitalize">
+					<strong> <%= user.username %></strong>
+					</h5>
+						<h6 class="card-subtitle text-muted">                    
+							<% if (campgrounds.length === 1) { %>
+							  <%= campgrounds.length %> Campground
+							<% } else { %>
+							  <%= campgrounds.length %> Campgrounds
+							<% } %>
+                        </h6> 
+                </div>
+              </div>
+            </div>
+		</div>
+	</div>
+		<div class="card mt-3 mb-3 shadow">
+          <div class="card-header text-capitalize bg-secondary text-white">
+            <% if (currentUser && user._id.equals(currentUser._id)) { %>
+              Your Profile
+            <% } else { %>
+              <%= user.username %>'<span class="text-lowercase">s</span> Profile
+            <% } %>            
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="fas fa-envelope"></i> <strong>Email: </strong><a href="mailto:<%= user.email %> "><%= user.email %></a>             
+              </li>
+                <li class="list-group-item">
+                  <i class="fas fa-phone"></i> <strong>Phone: </strong><span class="text-muted"><%= user.phone %>    </span>          
+                </li>
+                        
+              <li class="list-group-item">
+                <i class="far fa-calendar-alt"></i> <strong>Joined: </strong><span class="text-muted"><%= moment(user.joined).format('LL') %> </span>             
+              </li> 
+			   <% if (currentUser && user._id.equals(currentUser._id)) { %>
+                <li class="list-group-item d-flex justify-content-center">
+                  <a class="btn btn-warning btn float-left mr-1" href="/users/<%= user._id %>/edit"><strong>Edit Profile</strong></a>
+                  <form class="float-left" action="/users/<%= user._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger btn">
+						<strong>Delete Account</strong>
+					  </button>
+                  </form>
+                </li>
+              <% } %>       
+          </ul>
+        </div>
+      </div>
+<div class="col-12 col-md-6 col-lg-9 p-auto mb-5">
+        <div class="container text-center">
+			<h1 class="showName2"><strong>Campgrounds</strong></h1></div>             
+        <div class="row">          
+          <% campgrounds.forEach(function(campground) { %>
+            <div class="col-12 col-lg-6">
+              <div class="card  mt-3">
+				  <div class="embed-responsive embed-responsive-4by3">
+                <a href="/campgrounds/<%= campground._id %>"><img id="campgroundCard" class="card-img-top img-fluid embed-responsive-item" alt="Card image cap" src="<%= campground.image %>"></a> 
+					  </div>
+                <div class="card-body pb-2">
+                  <h5 class="card-title">
+                    <a href="/campgrounds/<%= campground._id %>" class="text-capitalize alert-link"><%= campground.name %></a>                     
+                  </h5>  
+					<h6 class="card-subtitle">
+                    <% if(!campground.comments.length) { %>
+                      <span class="text-muted">No Reviews</span>
+                    <% } else { %>
+                      <% var stars = ['<i class="far fa-star textDanger"></i>', '<i class="far fa-star textDanger"></i>', '<i class="far fa-star textDanger"></i>', '<i class="far fa-star textDanger"></i>', '<i class="far fa-star textDanger"></i>'] %>
+                      <% for(var i = 0; i < Math.round(campground.rateAvg); i++) { %>
+                          <% stars[i] = '<i class="fas fa-star textDanger"></i>' %>
+                      <% } %> 
+                      <% for(var i = 0; i < stars.length; i++) { %>
+                        <%- stars[i] %>
+                      <% } %>
+                      <% if (campground.comments.length === 1) { %>
+                        <span class="text-muted"><%= campground.comments.length %> Review</span> 
+                      <% } else { %>
+                        <span class="text-muted"><%= campground.comments.length %> Reviews</span> 
+                      <% } %>                
+                    <% } %>   
+                  </h6> 
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+</div>        
+
+	
+
+
+</div>
+</div>
+</div>
+
+
+<%- include("../partials/footer") %>
