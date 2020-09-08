@@ -15,8 +15,6 @@ YelpCamp was created using Node.js, Express, and MongoDB.Also using Google Fonts
 
 ![Image5](https://github.com/reveurguy/YelpCamp/blob/master/screenshots/Screenshot%20(147).png?raw=true)
 
-![Image6](https://github.com/reveurguy/YelpCamp/blob/master/screenshots/Screenshot%20(148).png?raw=true)
-
 ## Features
 * Users can create, edit, and remove campgrounds
 * Users can review campgrounds once, and edit or remove their review
