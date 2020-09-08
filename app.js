@@ -28,7 +28,6 @@ mongoose.connect(url, {
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true,
-	
 });
 
 app.use(bodyParser.json());
