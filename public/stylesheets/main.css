@@ -8,6 +8,47 @@ body
 	background-color:crimson;
 	color:white;
 }
+.labelWidth
+{
+	margin-left:30%;
+}
+.labelWidth2
+{
+	margin-right:20%;
+}
+@media screen and (max-width: 375px) {
+    .labelWidth {
+      margin-left:23%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .labelWidth {
+      margin-left:30%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .labelWidth {
+      margin-left:39%;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .labelWidth {
+      margin-left:40%;
+    }
+	.labelWidth2
+	{
+		margin-right:30%;
+	}
+}
+.widthLegend
+{
+	max-width:20%;
+}
+@media screen and (max-width: 768px) {
+    .widthLegend {
+      max-width:40%;
+    }
+}
 hr
 {
 
