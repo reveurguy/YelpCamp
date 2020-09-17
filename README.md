@@ -2,7 +2,7 @@
 
 YelpCamp is a campground reviewing website. Users can create their own campgrounds or review others' campgrounds.This was a project for a web dev course taught by Colt Steele.
 
-YelpCamp was created using Node.js, Express, and MongoDB.Also using Google Fonts, Anime.js, Bootstrap, FontAwesome, Mapbox, ScrollReveal, Icons8.
+YelpCamp was created using Node.js, Express, and MongoDB.Also using Google Fonts, Anime.js, Bootstrap, FontAwesome, Mapbox, ScrollReveal, Icons8, Animate.css, Star-ability.
 
 ## Screenshots
 ![Image1](https://github.com/reveurguy/YelpCamp/blob/master/screenshots/Screenshot%20(150).png?raw=true)
