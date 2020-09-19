@@ -3,6 +3,10 @@ body
 	font-family: 'Montserrat', sans-serif;
 	background-color: aliceblue;
 }
+.ml3
+{
+	font-size:50px;
+}
 .searchCont{
     display: flex;
 }
