@@ -3,8 +3,7 @@
 <header class="jumbotron text-center px-0 rounded-0 d-none d-md-block">
 		<div >
 		<h1><span id="main">
-			<img src="public/favicon.png">
-			YelpCamp
+			<img src="public/favicon.png"><span class="ml3"> YelpCamp</span>
 			</span></h1>
 		<p id="info">View our hand-picked campgrounds from all over the world!</p>
 		<p>
@@ -17,12 +16,14 @@
       <div class="collapse navbar-collapse">
         <div class="d-none d-md-block ml-auto">
           <form action="/campgrounds" method="GET" class="input-group">
-            <input type="text" class="form-control m-auto" type="text" name="search" placeholder="Search Campgrounds...">
+            <div class="searchCont">
+            <input type="text" class="form-control m-auto searchInput" type="text" name="search" placeholder="Search Campgrounds...">
             <div class="input-group-append">
-              <button class="btn btnNew border-0 btnHover" type="submit" >
+              <button class="btn btnNew btnHover btn-lg" type="submit" >
                     <i class="fa fa-search"></i>
                   </button>
             </div>
+				    </div>
           </form>
         </div>
       </div>
@@ -136,6 +137,24 @@
 </nav>
 	
 </div>
+
+<script>
+			// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml3');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+	
+	
+
+anime.timeline()
+  .add({
+    targets: '.ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
+  });		
+		
+		</script>
 
 
 <%- include("../partials/footer") %>

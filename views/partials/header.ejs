@@ -32,12 +32,7 @@
 
 
 <link rel="icon" type="image/png" href="/favicon.png" />
-
-
-	  <title>YelpCamp</title>
- 
-		 
-	  
+			<title>YelpCamp</title>
   </head>
 	<body>
 		
@@ -46,7 +41,7 @@
 			<div class="navbar-header mx-auto">
 				<a href="/" class="navbar-brand ">
 			<img src="https://img.icons8.com/color/70/000000/camping-tent.png" />
-			<span class="">YelpCamp</span>
+			<span>YelpCamp</span>
 			</a>
 			</div>
 			</div>
@@ -69,7 +64,7 @@
 			<div class="navbar-header mx-auto brandShow">
 				<a href="/" class="navbar-brand ">
 			<img src="https://img.icons8.com/color/70/000000/camping-tent.png" />
-			<span class="ml3">YelpCamp</span>
+			<span>YelpCamp</span>
 			</a>
 			</div>
             <ul class="navbar-nav ml-auto">
@@ -120,21 +115,3 @@
 					</div>
 			<% } %>	  
 		</div>
-		
-		<script>
-			// Wrap every letter in a span
-var textWrapper = document.querySelector('.ml3');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-	
-	
-
-anime.timeline()
-  .add({
-    targets: '.ml3 .letter',
-    opacity: [0,1],
-    easing: "easeInOutQuad",
-    duration: 2250,
-    delay: (el, i) => 150 * (i+1)
-  });		
-		
-		</script>

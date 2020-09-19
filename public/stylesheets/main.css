@@ -3,6 +3,26 @@ body
 	font-family: 'Montserrat', sans-serif;
 	background-color: aliceblue;
 }
+.searchCont{
+    display: flex;
+}
+
+.searchCont:hover > .searchInput{
+    width: 300px;
+	padding:5px;
+	height:50px;
+}
+.searchCont .searchInput{
+	padding:0;
+    background: aliceblue;
+    outline:none;
+    width: 0px;
+   -webkit-transition: all 600ms cubic-bezier(1.000, 0, 0.235, 1); /* older webkit */
+-webkit-transition: all 600ms cubic-bezier(1.000, -0.600, 0.235, 1.650);
+   -moz-transition: all 600ms cubic-bezier(1.000, -0.600, 0.235, 1.650);
+     -o-transition: all 600ms cubic-bezier(1.000, -0.600, 0.235, 1.650);
+        transition: all 600ms cubic-bezier(1.000, -0.600, 0.235, 1.650); /* custom */
+}
 .btnHover:hover
 {
 	background-color:crimson;
