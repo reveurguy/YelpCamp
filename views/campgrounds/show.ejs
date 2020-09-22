@@ -57,6 +57,28 @@
 					
 				</h4>
 				<p class="card-text"><%= campground.description%></p>
+					
+				<div>
+    <form action="/campgrounds/<%= campground._id %>/like" method="POST">
+        <div class="btn-group">
+            <% if (currentUser && campground.likes.some(function (like) {
+                return like.equals(currentUser._id)
+            })) { %>
+                <button class="btn btn-outline-danger">
+            <i class="fas fa-heart"></i> <%= campground.likes.length %>
+                </button>
+            <% } else { %>
+                <button class="btn btn-outline-danger">
+                    <i class=" fas fa-heart"></i> <%= campground.likes.length %>
+                </button>
+            <% } %>
+			<button type="button" class="btn btn-danger" data-toggle="modal"
+                    data-target="#campgroundLikes">See more details
+            </button>
+        </div>
+    </form>				
+</div>	
+					
 				<p class="card-text">
 					By - <strong><a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a> , <%= moment(campground.createdAt).fromNow() %></strong>
 				</p>
@@ -212,6 +234,40 @@
         </div>
       </div>
       </div>
+
+<!-- Campground Likes Modal -->
+<div id="campgroundLikes" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header mx-auto">
+		<h5 class="modal-title"><strong>Campground Likes</strong>
+		   <h4>
+			<span class="mr-2"></span>
+			<span class="badge badge-danger badge-pill"><%= campground.likes.length %></span>
+		   </h4>
+		</h5>
+            </div>
+            <div class="modal-body">
+				<ul class="list-group">
+				<% campground.likes.forEach(function(like) { %>
+				<li class="list-group-item list-group-item-danger">
+				<i class="fas fa-user"></i> <%= like.username %>
+					   </li>     
+				<% }); %>
+					<% if (campground.likes.length === 0) { %>
+					 <li class="list-group-item list-group-item-danger">
+						 <em>No likes yet.</em>
+					</li>
+					 <% } %>
+				</ul>
+            </div>
+            <div class="modal-footer mx-auto">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 	
 	
  

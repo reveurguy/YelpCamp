@@ -64,6 +64,11 @@
 				</a>
 				</div>
             		<div class="card-body pb-2">
+						
+				<div class="float-right my-auto">
+		 <span class="btn btn-danger"><i clas6s="fas fa-heart"></i> <%= campground.likes.length %>
+					</span>
+        		</div>	
                   		<h5 class="card-title text-capitalize">
 						<a href="/campgrounds/<%= campground._id %>" class="alert-link">
 							<%= campground.name %>
